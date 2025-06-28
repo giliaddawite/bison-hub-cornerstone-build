@@ -1,6 +1,5 @@
 
 import { useState } from 'react';
-import { smile, meh, frown } from 'lucide-react';
 import { EmojiReaction } from '../types/forum';
 import { Button } from './ui/button';
 import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
