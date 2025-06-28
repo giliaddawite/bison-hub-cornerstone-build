@@ -1,15 +1,36 @@
 
 import { useState } from 'react';
-import { User, Calendar } from 'lucide-react';
+import { User, Calendar, Smile } from 'lucide-react';
 import { Comment } from '../types/forum';
+import { Button } from './ui/button';
+import { Popover, PopoverContent, PopoverTrigger } from './ui/popover';
 
 interface CommentSectionProps {
   comments: Comment[];
   onAddComment: (content: string) => void;
 }
 
+const EMOJI_OPTIONS = [
+  '😀', '😃', '😄', '😁', '😊', '😍', '🥰', '😘', '😗', '😚',
+  '😙', '😋', '😛', '😜', '🤪', '😝', '🤗', '🤔', '🤐', '🤨',
+  '😐', '😑', '😶', '😏', '😒', '🙄', '😬', '🤥', '😔', '😪',
+  '🤤', '😴', '😷', '🤒', '🤕', '🤢', '🤮', '🤧', '🥵', '🥶',
+  '🥴', '😵', '🤯', '🤠', '🥳', '😎', '🤓', '🧐', '😕', '😟',
+  '🙁', '☹️', '😮', '😯', '😲', '😳', '🥺', '😦', '😧', '😨',
+  '😰', '😥', '😢', '😭', '😱', '😖', '😣', '😞', '😓', '😩',
+  '😫', '🥱', '😤', '😡', '😠', '🤬', '😈', '👿', '💀', '☠️',
+  '💩', '🤡', '👹', '👺', '👻', '👽', '👾', '🤖', '😺', '😸',
+  '😹', '😻', '😼', '😽', '🙀', '😿', '😾', '❤️', '💛', '💚',
+  '💙', '💜', '🖤', '🤍', '🤎', '💔', '❣️', '💕', '💖', '💗',
+  '💘', '💝', '💟', '👍', '👎', '👌', '🤌', '🤏', '✌️', '🤞',
+  '🤟', '🤘', '🤙', '👈', '👉', '👆', '🖕', '👇', '☝️', '👋',
+  '🤚', '🖐️', '✋', '🖖', '👏', '🙌', '🤝', '🙏', '✊', '👊',
+  '🤛', '🤜', '💪', '🎉', '🎊', '🔥', '⭐', '✨', '💯', '💫'
+];
+
 const CommentSection = ({ comments, onAddComment }: CommentSectionProps) => {
   const [newComment, setNewComment] = useState('');
+  const [isEmojiOpen, setIsEmojiOpen] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -17,6 +38,11 @@ const CommentSection = ({ comments, onAddComment }: CommentSectionProps) => {
       onAddComment(newComment.trim());
       setNewComment('');
     }
+  };
+
+  const handleEmojiSelect = (emoji: string) => {
+    setNewComment(prev => prev + emoji);
+    setIsEmojiOpen(false);
   };
 
   const formatDate = (date: Date) => {
@@ -31,13 +57,43 @@ const CommentSection = ({ comments, onAddComment }: CommentSectionProps) => {
       <div className="p-6">
         {/* Add Comment Form */}
         <form onSubmit={handleSubmit} className="mb-6">
-          <textarea
-            value={newComment}
-            onChange={(e) => setNewComment(e.target.value)}
-            placeholder="Add your comment..."
-            className="w-full p-3 border border-gray-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            rows={3}
-          />
+          <div className="relative">
+            <textarea
+              value={newComment}
+              onChange={(e) => setNewComment(e.target.value)}
+              placeholder="Add your comment..."
+              className="w-full p-3 pr-12 border border-gray-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              rows={3}
+            />
+            <div className="absolute bottom-3 right-3">
+              <Popover open={isEmojiOpen} onOpenChange={setIsEmojiOpen}>
+                <PopoverTrigger asChild>
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    className="h-8 w-8 p-0 text-gray-400 hover:text-gray-600"
+                  >
+                    <Smile className="h-4 w-4" />
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-80 p-2">
+                  <div className="grid grid-cols-10 gap-1 max-h-48 overflow-y-auto">
+                    {EMOJI_OPTIONS.map((emoji, index) => (
+                      <button
+                        key={index}
+                        type="button"
+                        onClick={() => handleEmojiSelect(emoji)}
+                        className="w-8 h-8 flex items-center justify-center hover:bg-gray-100 rounded text-lg transition-colors duration-150"
+                      >
+                        {emoji}
+                      </button>
+                    ))}
+                  </div>
+                </PopoverContent>
+              </Popover>
+            </div>
+          </div>
           <div className="flex justify-end mt-3">
             <button
               type="submit"
