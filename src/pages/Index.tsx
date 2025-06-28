@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import PostCard from '../components/PostCard';
@@ -18,38 +19,40 @@ const Index = () => {
     const mockPosts: Post[] = [
       {
         id: '1',
-        title: 'Best study spots on campus?',
-        content: 'Looking for quiet places to study for finals. Any recommendations?',
+        title: '📚 Best study spots on campus?',
+        content: 'Looking for quiet places to study for finals. Any recommendations? Need somewhere with good wifi and comfy seats! ☕',
         category: 'academics',
         authorId: 'user123',
-        authorName: 'Bison Student',
+        authorName: 'Study Beast 🤓',
         createdAt: new Date('2024-06-27T10:00:00Z'),
         comments: [
           {
             id: 'c1',
-            content: 'The Founders Library 4th floor is amazing!',
+            content: 'The Founders Library 4th floor is amazing! Super quiet and great for deep focus 💯',
             authorId: 'user456',
-            authorName: 'Study Buddy',
+            authorName: 'Library Lover',
             createdAt: new Date('2024-06-27T11:00:00Z')
           }
         ],
         reactions: [
-          { emoji: '👍', count: 5, userReacted: false },
-          { emoji: '📚', count: 3, userReacted: true }
+          { emoji: '👍', count: 15, userReacted: false },
+          { emoji: '📚', count: 8, userReacted: true },
+          { emoji: '💯', count: 5, userReacted: false }
         ]
       },
       {
         id: '2',
-        title: 'Howard Homecoming 2024',
-        content: 'Who else is excited for Homecoming? What events are you most looking forward to?',
+        title: '🏠 Howard Homecoming 2024 🎉',
+        content: 'Who else is HYPED for Homecoming?! 🔥 What events are you most looking forward to? The yard show is gonna be INSANE this year! 💃🕺',
         category: 'campus-life',
         authorId: 'user789',
-        authorName: 'Bison Pride',
+        authorName: 'Bison Pride 💙❤️',
         createdAt: new Date('2024-06-26T15:30:00Z'),
         comments: [],
         reactions: [
-          { emoji: '🎉', count: 12, userReacted: false },
-          { emoji: '❤️', count: 8, userReacted: true }
+          { emoji: '🎉', count: 25, userReacted: false },
+          { emoji: '❤️', count: 18, userReacted: true },
+          { emoji: '🔥', count: 12, userReacted: false }
         ]
       }
     ];
@@ -145,13 +148,20 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-red-50">
+    <div className="min-h-screen bg-black">
       <Header />
       
       <main className="container mx-auto px-4 py-8 max-w-4xl">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-2">The Bison's Corner</h1>
-          <p className="text-gray-600">Your Howard University Community Hub</p>
+        <div className="mb-8 text-center">
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent mb-4">
+            The Bison's Corner ✨
+          </h1>
+          <p className="text-gray-400 text-lg">Your Howard University Community Hub 🏛️</p>
+          <div className="mt-4 flex justify-center space-x-2">
+            <span className="text-2xl">💙</span>
+            <span className="text-2xl">❤️</span>
+            <span className="text-2xl">🦬</span>
+          </div>
         </div>
 
         {/* Search and Filter Controls */}
@@ -164,9 +174,9 @@ const Index = () => {
             />
             <button
               onClick={() => setShowCreatePost(true)}
-              className="bg-gradient-to-r from-blue-600 to-red-600 text-white px-6 py-2 rounded-lg font-semibold hover:from-blue-700 hover:to-red-700 transition-all duration-200 shadow-lg hover:shadow-xl"
+              className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 text-white px-8 py-3 rounded-2xl font-bold hover:from-purple-700 hover:via-pink-700 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105 animate-pulse"
             >
-              Create Post
+              ✨ Create Post
             </button>
           </div>
         </div>
@@ -182,8 +192,15 @@ const Index = () => {
         {/* Posts Feed */}
         <div className="space-y-6">
           {filteredPosts.length === 0 ? (
-            <div className="text-center py-12">
-              <p className="text-gray-500 text-lg">No posts found. Be the first to start the conversation!</p>
+            <div className="text-center py-16 bg-gray-900 rounded-2xl border border-gray-700">
+              <div className="text-6xl mb-4">😔</div>
+              <p className="text-gray-400 text-lg">No posts found. Be the first to start the conversation!</p>
+              <button
+                onClick={() => setShowCreatePost(true)}
+                className="mt-4 text-purple-400 hover:text-purple-300 font-medium"
+              >
+                Create the first post! 🚀
+              </button>
             </div>
           ) : (
             filteredPosts.map(post => (

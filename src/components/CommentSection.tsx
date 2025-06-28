@@ -53,7 +53,7 @@ const CommentSection = ({ comments, onAddComment }: CommentSectionProps) => {
   };
 
   return (
-    <div className="bg-gray-50 border-t border-gray-100">
+    <div className="bg-gray-900 border-t border-gray-700">
       <div className="p-6">
         {/* Add Comment Form */}
         <form onSubmit={handleSubmit} className="mb-6">
@@ -61,8 +61,8 @@ const CommentSection = ({ comments, onAddComment }: CommentSectionProps) => {
             <textarea
               value={newComment}
               onChange={(e) => setNewComment(e.target.value)}
-              placeholder="Add your comment..."
-              className="w-full p-3 pr-12 border border-gray-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              placeholder="Add your comment... 💭"
+              className="w-full p-4 pr-12 bg-gray-800 border border-gray-600 text-white placeholder-gray-400 rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
               rows={3}
             />
             <div className="absolute bottom-3 right-3">
@@ -72,19 +72,19 @@ const CommentSection = ({ comments, onAddComment }: CommentSectionProps) => {
                     type="button"
                     variant="ghost"
                     size="sm"
-                    className="h-8 w-8 p-0 text-gray-400 hover:text-gray-600"
+                    className="h-8 w-8 p-0 text-gray-400 hover:text-purple-400 hover:bg-gray-700"
                   >
                     <Smile className="h-4 w-4" />
                   </Button>
                 </PopoverTrigger>
-                <PopoverContent className="w-80 p-2">
+                <PopoverContent className="w-80 p-2 bg-gray-800 border-gray-600">
                   <div className="grid grid-cols-10 gap-1 max-h-48 overflow-y-auto">
                     {EMOJI_OPTIONS.map((emoji, index) => (
                       <button
                         key={index}
                         type="button"
                         onClick={() => handleEmojiSelect(emoji)}
-                        className="w-8 h-8 flex items-center justify-center hover:bg-gray-100 rounded text-lg transition-colors duration-150"
+                        className="w-8 h-8 flex items-center justify-center hover:bg-gray-700 rounded text-lg transition-colors duration-150"
                       >
                         {emoji}
                       </button>
@@ -98,9 +98,9 @@ const CommentSection = ({ comments, onAddComment }: CommentSectionProps) => {
             <button
               type="submit"
               disabled={!newComment.trim()}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors duration-200"
+              className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2 rounded-xl font-medium hover:from-purple-700 hover:to-pink-700 disabled:from-gray-600 disabled:to-gray-600 disabled:cursor-not-allowed transition-all duration-200 shadow-lg"
             >
-              Comment
+              💬 Comment
             </button>
           </div>
         </form>
@@ -108,21 +108,24 @@ const CommentSection = ({ comments, onAddComment }: CommentSectionProps) => {
         {/* Comments List */}
         <div className="space-y-4">
           {comments.length === 0 ? (
-            <p className="text-gray-500 text-center py-4">No comments yet. Be the first to comment!</p>
+            <div className="text-center py-8 bg-gray-800 rounded-xl border border-gray-700">
+              <div className="text-4xl mb-2">💭</div>
+              <p className="text-gray-400">No comments yet. Be the first to comment!</p>
+            </div>
           ) : (
             comments.map(comment => (
-              <div key={comment.id} className="bg-white p-4 rounded-lg border border-gray-100">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center space-x-2 text-sm text-gray-500">
-                    <User className="h-4 w-4" />
-                    <span>{comment.authorName}</span>
+              <div key={comment.id} className="bg-gray-800 p-4 rounded-xl border border-gray-700 hover:border-gray-600 transition-colors duration-200">
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center space-x-2 text-sm text-gray-400">
+                    <User className="h-4 w-4 text-purple-400" />
+                    <span className="text-purple-300 font-medium">{comment.authorName}</span>
                   </div>
-                  <div className="flex items-center space-x-1 text-sm text-gray-400">
+                  <div className="flex items-center space-x-1 text-sm text-gray-500">
                     <Calendar className="h-3 w-3" />
                     <span>{formatDate(comment.createdAt)}</span>
                   </div>
                 </div>
-                <p className="text-gray-700">{comment.content}</p>
+                <p className="text-gray-200">{comment.content}</p>
               </div>
             ))
           )}
