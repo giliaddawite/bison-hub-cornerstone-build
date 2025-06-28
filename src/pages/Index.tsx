@@ -153,13 +153,13 @@ const Index = () => {
       
       <main className="container mx-auto px-4 py-8 max-w-4xl">
         <div className="mb-8 text-center">
-          <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent mb-4">
-            The Bison's Corner ✨
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent mb-4">
+            The Bison's Tea ✨
           </h1>
           <p className="text-gray-400 text-lg">Your Howard University Community Hub 🏛️</p>
           <div className="mt-4 flex justify-center space-x-2">
             <span className="text-2xl">💙</span>
-            <span className="text-2xl">❤️</span>
+            <span className="text-2xl">💜</span>
             <span className="text-2xl">🦬</span>
           </div>
         </div>
@@ -174,9 +174,19 @@ const Index = () => {
             />
             <button
               onClick={() => setShowCreatePost(true)}
-              className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 text-white px-8 py-3 rounded-2xl font-bold hover:from-purple-700 hover:via-pink-700 hover:to-blue-700 transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105 animate-pulse"
+              className="relative bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 text-white px-8 py-3 rounded-2xl font-bold hover:from-purple-700 hover:via-blue-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-2xl transform hover:scale-105 overflow-hidden group"
             >
-              ✨ Create Post
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-400 via-blue-400 to-indigo-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+              <div className="absolute top-0 left-0 w-full h-full">
+                <div className="absolute top-1 left-2 w-1 h-1 bg-white rounded-full animate-pulse opacity-80"></div>
+                <div className="absolute top-2 right-4 w-1 h-1 bg-yellow-300 rounded-full animate-pulse delay-150"></div>
+                <div className="absolute bottom-2 left-6 w-1 h-1 bg-blue-200 rounded-full animate-pulse delay-300"></div>
+                <div className="absolute bottom-1 right-2 w-1 h-1 bg-purple-200 rounded-full animate-pulse delay-500"></div>
+                <div className="absolute top-3 left-1/2 w-1 h-1 bg-indigo-200 rounded-full animate-pulse delay-700"></div>
+              </div>
+              <span className="relative z-10 flex items-center space-x-2">
+                <span>✨ Create Post ✨</span>
+              </span>
             </button>
           </div>
         </div>
