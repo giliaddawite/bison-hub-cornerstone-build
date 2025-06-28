@@ -9,6 +9,12 @@ export interface Comment {
   createdAt: Date;
 }
 
+export interface EmojiReaction {
+  emoji: string;
+  count: number;
+  userReacted: boolean;
+}
+
 export interface Post {
   id: string;
   title: string;
@@ -18,6 +24,7 @@ export interface Post {
   authorName: string;
   createdAt: Date;
   comments: Comment[];
+  reactions: EmojiReaction[];
 }
 
 export const CATEGORIES: { value: Category; label: string; color: string }[] = [

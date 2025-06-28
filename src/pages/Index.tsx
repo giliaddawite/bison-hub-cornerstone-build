@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import PostCard from '../components/PostCard';
@@ -33,6 +32,10 @@ const Index = () => {
             authorName: 'Study Buddy',
             createdAt: new Date('2024-06-27T11:00:00Z')
           }
+        ],
+        reactions: [
+          { emoji: '👍', count: 5, userReacted: false },
+          { emoji: '📚', count: 3, userReacted: true }
         ]
       },
       {
@@ -43,7 +46,11 @@ const Index = () => {
         authorId: 'user789',
         authorName: 'Bison Pride',
         createdAt: new Date('2024-06-26T15:30:00Z'),
-        comments: []
+        comments: [],
+        reactions: [
+          { emoji: '🎉', count: 12, userReacted: false },
+          { emoji: '❤️', count: 8, userReacted: true }
+        ]
       }
     ];
     setPosts(mockPosts);
@@ -68,12 +75,13 @@ const Index = () => {
     setFilteredPosts(filtered);
   }, [posts, selectedCategory, searchQuery]);
 
-  const handleCreatePost = (newPost: Omit<Post, 'id' | 'createdAt' | 'comments'>) => {
+  const handleCreatePost = (newPost: Omit<Post, 'id' | 'createdAt' | 'comments' | 'reactions'>) => {
     const post: Post = {
       ...newPost,
       id: Date.now().toString(),
       createdAt: new Date(),
-      comments: []
+      comments: [],
+      reactions: []
     };
     setPosts(prev => [post, ...prev]);
     setShowCreatePost(false);
@@ -93,6 +101,47 @@ const Index = () => {
         ? { ...post, comments: [...post.comments, comment] }
         : post
     ));
+  };
+
+  const handleReact = (postId: string, emoji: string) => {
+    setPosts(prev => prev.map(post => {
+      if (post.id !== postId) return post;
+      
+      const reactions = [...(post.reactions || [])];
+      const existingReactionIndex = reactions.findIndex(r => r.emoji === emoji);
+      
+      if (existingReactionIndex >= 0) {
+        const reaction = reactions[existingReactionIndex];
+        if (reaction.userReacted) {
+          // Remove user's reaction
+          if (reaction.count === 1) {
+            reactions.splice(existingReactionIndex, 1);
+          } else {
+            reactions[existingReactionIndex] = {
+              ...reaction,
+              count: reaction.count - 1,
+              userReacted: false
+            };
+          }
+        } else {
+          // Add user's reaction
+          reactions[existingReactionIndex] = {
+            ...reaction,
+            count: reaction.count + 1,
+            userReacted: true
+          };
+        }
+      } else {
+        // Add new reaction
+        reactions.push({
+          emoji,
+          count: 1,
+          userReacted: true
+        });
+      }
+      
+      return { ...post, reactions };
+    }));
   };
 
   return (
@@ -142,6 +191,7 @@ const Index = () => {
                 key={post.id} 
                 post={post} 
                 onAddComment={handleAddComment}
+                onReact={handleReact}
               />
             ))
           )}

@@ -4,13 +4,15 @@ import { MessageSquare, Calendar, User } from 'lucide-react';
 import { Post } from '../types/forum';
 import { CATEGORIES } from '../types/forum';
 import CommentSection from './CommentSection';
+import EmojiReaction from './EmojiReaction';
 
 interface PostCardProps {
   post: Post;
   onAddComment: (postId: string, content: string) => void;
+  onReact: (postId: string, emoji: string) => void;
 }
 
-const PostCard = ({ post, onAddComment }: PostCardProps) => {
+const PostCard = ({ post, onAddComment, onReact }: PostCardProps) => {
   const [showComments, setShowComments] = useState(false);
   const categoryInfo = CATEGORIES.find(cat => cat.value === post.category);
 
@@ -49,13 +51,20 @@ const PostCard = ({ post, onAddComment }: PostCardProps) => {
         </p>
 
         <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-          <button
-            onClick={() => setShowComments(!showComments)}
-            className="flex items-center space-x-2 text-gray-500 hover:text-blue-600 transition-colors duration-200"
-          >
-            <MessageSquare className="h-4 w-4" />
-            <span>{post.comments.length} Comments</span>
-          </button>
+          <div className="flex items-center space-x-4">
+            <button
+              onClick={() => setShowComments(!showComments)}
+              className="flex items-center space-x-2 text-gray-500 hover:text-blue-600 transition-colors duration-200"
+            >
+              <MessageSquare className="h-4 w-4" />
+              <span>{post.comments.length} Comments</span>
+            </button>
+            
+            <EmojiReaction 
+              reactions={post.reactions || []} 
+              onReact={(emoji) => onReact(post.id, emoji)}
+            />
+          </div>
         </div>
       </div>
 
