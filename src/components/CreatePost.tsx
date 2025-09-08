@@ -68,7 +68,7 @@ const CreatePost = ({ onCreatePost, onCancel }: CreatePostProps) => {
     <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50 backdrop-blur-sm">
       <div className="bg-gray-900 border border-gray-700 rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         <div className="flex items-center justify-between p-6 border-b border-gray-700">
-          <h2 className="text-2xl font-bold text-white">✨ Create New Post</h2>
+          <h2 className="text-2xl font-bold text-white">Create New Post</h2>
           <button
             onClick={onCancel}
             className="text-gray-400 hover:text-white transition-colors duration-200 hover:bg-gray-800 p-2 rounded-lg"
@@ -80,7 +80,7 @@ const CreatePost = ({ onCreatePost, onCancel }: CreatePostProps) => {
         <form onSubmit={handleSubmit} className="p-6 space-y-6">
           <div>
             <label htmlFor="category" className="block text-sm font-medium text-gray-300 mb-2">
-              📂 Category
+              Category
             </label>
             <select
               id="category"
@@ -98,7 +98,7 @@ const CreatePost = ({ onCreatePost, onCancel }: CreatePostProps) => {
 
           <div>
             <label htmlFor="title" className="block text-sm font-medium text-gray-300 mb-2">
-              💭 Title
+              Title
             </label>
             <div className="relative">
               <input
@@ -106,7 +106,7 @@ const CreatePost = ({ onCreatePost, onCancel }: CreatePostProps) => {
                 id="title"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                placeholder="What's on your mind? 🤔"
+                placeholder="What's on your mind?"
                 className="w-full p-3 pr-12 bg-gray-800 border border-gray-600 text-white placeholder-gray-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                 required
               />
@@ -143,14 +143,14 @@ const CreatePost = ({ onCreatePost, onCancel }: CreatePostProps) => {
 
           <div>
             <label htmlFor="content" className="block text-sm font-medium text-gray-300 mb-2">
-              📝 Content
+              Content
             </label>
             <div className="relative">
               <textarea
                 id="content"
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
-                placeholder="Share your thoughts, questions, or information... 💬"
+                placeholder="Share your thoughts, questions, or information..."
                 rows={6}
                 className="w-full p-3 pr-12 bg-gray-800 border border-gray-600 text-white placeholder-gray-400 rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
                 required
@@ -199,7 +199,7 @@ const CreatePost = ({ onCreatePost, onCancel }: CreatePostProps) => {
               disabled={!title.trim() || !content.trim()}
               className="px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl font-semibold hover:from-purple-700 hover:to-blue-700 disabled:from-gray-600 disabled:to-gray-600 disabled:cursor-not-allowed transition-all duration-200 shadow-lg hover:shadow-xl"
             >
-              🚀 Create Post
+              Create Post
             </button>
           </div>
         </form>

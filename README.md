@@ -1,73 +1,183 @@
-# Welcome to your Lovable project
+# The Bison Hub
 
-## Project info
+A modern, interactive community forum platform designed specifically for Howard University students. Built with React, TypeScript, and Vite, featuring a beautiful dark theme with Howard's signature purple and blue colors.
 
-**URL**: https://lovable.dev/projects/9a99eea9-8164-469d-8386-286f1a9db571
+## About
 
-## How can I edit this code?
+The Bison Hub is a community-driven platform where Howard University students can:
+- Share posts and discussions across different categories
+- React to posts with emojis
+- Comment on posts and engage in conversations
+- Search and filter content by category
+- Create new posts with rich content
 
-There are several ways of editing your application.
+## Features
 
-**Use Lovable**
+### Core Functionality
+- **Post Creation**: Create engaging posts with titles and content
+- **Category System**: Organize posts into relevant categories:
+  - Academics
+  - Dorms
+  - Food Spots
+  - Financial Aid
+  - Campus Life
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/9a99eea9-8164-469d-8386-286f1a9db571) and start prompting.
+### User Experience
+- **Modern UI**: Beautiful dark theme with gradient accents
+- **Emoji Reactions**: Express yourself with emoji reactions on posts
+- **Real-time Search**: Find posts quickly with instant search
+- **Category Filtering**: Browse posts by specific categories
+- **Responsive Design**: Works seamlessly on desktop and mobile
 
-Changes made via Lovable will be committed automatically to this repo.
+### Technical Features
+- **TypeScript**: Full type safety throughout the application
+- **React Hooks**: Modern React patterns with useState and useEffect
+- **Component Architecture**: Modular, reusable components
+- **State Management**: Efficient local state management
+- **Hot Module Replacement**: Fast development with Vite
 
-**Use your preferred IDE**
+## Getting Started
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Prerequisites
+- Node.js (version 16 or higher)
+- npm or yarn package manager
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Installation
 
-Follow these steps:
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd bison-hub-cornerstone-build
+   ```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+3. **Start the development server**
+   ```bash
+   npm run dev
+   ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+4. **Open your browser**
+   Navigate to `http://localhost:5173` to view the application
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+### Available Scripts
+
+- `npm run dev` - Start the development server
+- `npm run build` - Build the application for production
+- `npm run build:dev` - Build in development mode
+- `npm run preview` - Preview the production build
+- `npm run lint` - Run ESLint for code quality
+
+## Project Structure
+
+```
+src/
+├── components/           # Reusable UI components
+│   ├── ui/              # shadcn/ui components
+│   ├── CategoryFilter.tsx
+│   ├── CommentSection.tsx
+│   ├── CreatePost.tsx
+│   ├── EmojiReaction.tsx
+│   ├── Header.tsx
+│   ├── PostCard.tsx
+│   └── SearchBar.tsx
+├── hooks/               # Custom React hooks
+├── lib/                 # Utility functions
+├── pages/               # Page components
+│   ├── Index.tsx        # Main forum page
+│   └── NotFound.tsx     # 404 page
+├── types/               # TypeScript type definitions
+│   └── forum.ts         # Forum-related types
+├── App.tsx              # Main application component
+└── main.tsx             # Application entry point
 ```
 
-**Edit a file directly in GitHub**
+## Design System
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Color Palette
+- **Primary**: Purple to Blue gradient (`from-purple-400 via-blue-400 to-indigo-400`)
+- **Background**: Dark theme with black base (`bg-black`)
+- **Text**: White and gray variants for hierarchy
+- **Accents**: Howard University colors (purple, blue, indigo)
 
-**Use GitHub Codespaces**
+### Typography
+- **Headings**: Bold, gradient text for impact
+- **Body**: Clean, readable fonts with proper contrast
+- **Emojis**: Strategic use of emojis for engagement
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Technologies Used
 
-## What technologies are used for this project?
+### Frontend
+- **React 18** - Modern React with hooks
+- **TypeScript** - Type-safe development
+- **Vite** - Fast build tool and dev server
+- **Tailwind CSS** - Utility-first CSS framework
+- **shadcn/ui** - Beautiful, accessible UI components
 
-This project is built with:
+### UI Components
+- **Radix UI** - Headless UI primitives
+- **Lucide React** - Beautiful icons
+- **React Router DOM** - Client-side routing
+- **React Hook Form** - Form handling
+- **Zod** - Schema validation
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+### Development Tools
+- **ESLint** - Code linting
+- **PostCSS** - CSS processing
+- **Autoprefixer** - CSS vendor prefixes
 
-## How can I deploy this project?
+## Features in Detail
 
-Simply open [Lovable](https://lovable.dev/projects/9a99eea9-8164-469d-8386-286f1a9db571) and click on Share -> Publish.
+### Post Management
+- Create posts with rich content
+- Automatic timestamping
+- Author attribution
+- Category assignment
 
-## Can I connect a custom domain to my Lovable project?
+### Interaction System
+- Emoji reactions with counts
+- Nested comment system
+- Real-time updates
+- User engagement tracking
 
-Yes, you can!
+### Search & Discovery
+- Full-text search across posts
+- Category-based filtering
+- Real-time filtering
+- Empty state handling
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## Future Enhancements
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+- User authentication and profiles
+- Real-time notifications
+- Image upload support
+- Advanced moderation tools
+- Mobile app development
+- Integration with Howard University systems
+
+## Contributing
+
+We welcome contributions from the Howard University community! Here's how you can help:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Howard University
+
+Built for the Howard University community. The Bison Hub represents our commitment to fostering connections, sharing knowledge, and building a stronger campus community.
+
+---
+
+**Made by Howard University Students**
+
+*"Truth and Service" - Howard University Motto*

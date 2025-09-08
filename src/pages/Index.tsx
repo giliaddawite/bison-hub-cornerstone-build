@@ -19,16 +19,16 @@ const Index = () => {
     const mockPosts: Post[] = [
       {
         id: '1',
-        title: '📚 Best study spots on campus?',
-        content: 'Looking for quiet places to study for finals. Any recommendations? Need somewhere with good wifi and comfy seats! ☕',
+        title: 'Best study spots on campus?',
+        content: 'Looking for quiet places to study for finals. Any recommendations? Need somewhere with good wifi and comfy seats!',
         category: 'academics',
         authorId: 'user123',
-        authorName: 'Study Beast 🤓',
+        authorName: 'Study Beast',
         createdAt: new Date('2024-06-27T10:00:00Z'),
         comments: [
           {
             id: 'c1',
-            content: 'The Founders Library 4th floor is amazing! Super quiet and great for deep focus 💯',
+            content: 'The Founders Library 4th floor is amazing! Super quiet and great for deep focus',
             authorId: 'user456',
             authorName: 'Library Lover',
             createdAt: new Date('2024-06-27T11:00:00Z')
@@ -42,11 +42,11 @@ const Index = () => {
       },
       {
         id: '2',
-        title: '🏠 Howard Homecoming 2024 🎉',
-        content: 'Who else is HYPED for Homecoming?! 🔥 What events are you most looking forward to? The yard show is gonna be INSANE this year! 💃🕺',
+        title: 'Howard Homecoming 2024',
+        content: 'Who else is HYPED for Homecoming?! What events are you most looking forward to? The yard show is gonna be INSANE this year!',
         category: 'campus-life',
         authorId: 'user789',
-        authorName: 'Bison Pride 💙❤️',
+        authorName: 'Bison Pride',
         createdAt: new Date('2024-06-26T15:30:00Z'),
         comments: [],
         reactions: [
@@ -154,14 +154,9 @@ const Index = () => {
       <main className="container mx-auto px-4 py-8 max-w-4xl">
         <div className="mb-8 text-center">
           <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent mb-4">
-            The Bison's Tea ✨
+            The Bison Hub
           </h1>
-          <p className="text-gray-400 text-lg">Your Howard University Community Hub 🏛️</p>
-          <div className="mt-4 flex justify-center space-x-2">
-            <span className="text-2xl">💙</span>
-            <span className="text-2xl">💜</span>
-            <span className="text-2xl">🦬</span>
-          </div>
+          <p className="text-gray-400 text-lg">Your Howard University Community Hub</p>
         </div>
 
         {/* Search and Filter Controls */}
@@ -185,7 +180,7 @@ const Index = () => {
                 <div className="absolute top-3 left-1/2 w-1 h-1 bg-indigo-200 rounded-full animate-pulse delay-700"></div>
               </div>
               <span className="relative z-10 flex items-center space-x-2">
-                <span>✨ Create Post ✨</span>
+                <span>Create Post</span>
               </span>
             </button>
           </div>
@@ -203,13 +198,13 @@ const Index = () => {
         <div className="space-y-6">
           {filteredPosts.length === 0 ? (
             <div className="text-center py-16 bg-gray-900 rounded-2xl border border-gray-700">
-              <div className="text-6xl mb-4">😔</div>
+              <div className="text-6xl mb-4">💬</div>
               <p className="text-gray-400 text-lg">No posts found. Be the first to start the conversation!</p>
               <button
                 onClick={() => setShowCreatePost(true)}
                 className="mt-4 text-purple-400 hover:text-purple-300 font-medium"
               >
-                Create the first post! 🚀
+                Create the first post!
               </button>
             </div>
           ) : (

@@ -15,16 +15,14 @@ const Header = () => {
               <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-300 to-purple-300 bg-clip-text text-transparent">
                 The Bison's Tea
               </h1>
-              <p className="text-blue-200 text-sm flex items-center space-x-2">
-                <span>Howard University Community</span>
-                <span className="text-yellow-300">✨</span>
+              <p className="text-blue-200 text-sm">
+                Howard University Community
               </p>
             </div>
           </div>
           <div className="text-right">
-            <p className="text-sm text-blue-200 flex items-center space-x-2">
-              <span>Welcome, Anonymous Bison!</span>
-              <span className="text-xl">🦬</span>
+            <p className="text-sm text-blue-200">
+              Welcome, Anonymous Bison!
             </p>
           </div>
         </div>

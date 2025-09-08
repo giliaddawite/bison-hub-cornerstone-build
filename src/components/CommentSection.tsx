@@ -61,7 +61,7 @@ const CommentSection = ({ comments, onAddComment }: CommentSectionProps) => {
             <textarea
               value={newComment}
               onChange={(e) => setNewComment(e.target.value)}
-              placeholder="Add your comment... 💭"
+              placeholder="Add your comment..."
               className="w-full p-4 pr-12 bg-gray-800 border border-gray-600 text-white placeholder-gray-400 rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
               rows={3}
             />
@@ -100,7 +100,7 @@ const CommentSection = ({ comments, onAddComment }: CommentSectionProps) => {
               disabled={!newComment.trim()}
               className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-2 rounded-xl font-medium hover:from-purple-700 hover:to-blue-700 disabled:from-gray-600 disabled:to-gray-600 disabled:cursor-not-allowed transition-all duration-200 shadow-lg"
             >
-              💬 Comment
+              Comment
             </button>
           </div>
         </form>
@@ -109,7 +109,7 @@ const CommentSection = ({ comments, onAddComment }: CommentSectionProps) => {
         <div className="space-y-4">
           {comments.length === 0 ? (
             <div className="text-center py-8 bg-gray-800 rounded-xl border border-gray-700">
-              <div className="text-4xl mb-2">💭</div>
+              <div className="text-4xl mb-2">💬</div>
               <p className="text-gray-400">No comments yet. Be the first to comment!</p>
             </div>
           ) : (
